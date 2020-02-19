@@ -1,7 +1,6 @@
 import React from "react";
 import { Row, Col } from "./ui";
 import { connect } from "react-redux";
-import { INCREASE, DECREASE } from "./contstants";
 import store from "./store";
 import * as actions from "./actions";
 function App(props) {
@@ -24,8 +23,4 @@ function App(props) {
 const mapStateProps = state => ({
   ...state.app
 });
-export default connect(mapStateProps, dispatch => ({
-  onAyncIncrease: () => dispatch(actions.onAyncIncrease()),
-  onIncrease: () => dispatch(actions.onIncrease()),
-  onDecrease: () => dispatch(actions.onDecrease())
-}))(App);
+export default connect(mapStateProps, actions)(App);
