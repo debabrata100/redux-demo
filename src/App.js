@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Row, Col } from "./ui";
+import { connect } from "react-redux";
+import { INCREASE, DECREASE } from "./contstants";
+import store from "./store";
+import * as actions from "./actions";
+function App(props) {
+  // console.log(props);
+  const { count, onIncrease, onDecrease, onAyncIncrease } = props;
 
-function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Col top={100}>
+        <Row>Count: {count}</Row>
+        <Row top={16}>
+          <button onClick={onDecrease}>-</button>
+          <button onClick={onIncrease}>+</button>
+          <button onClick={onAyncIncrease}>aync +</button>
+        </Row>
+      </Col>
     </div>
   );
 }
-
-export default App;
+const mapStateProps = state => ({
+  ...state.app
+});
+export default connect(mapStateProps, dispatch => ({
+  onAyncIncrease: () => dispatch(actions.onAyncIncrease()),
+  onIncrease: () => dispatch(actions.onIncrease()),
+  onDecrease: () => dispatch(actions.onDecrease())
+}))(App);
