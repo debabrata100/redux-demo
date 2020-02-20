@@ -9,12 +9,12 @@ export const Row = styled.div`
   ${props =>
     props.top &&
     css`
-      margin-top: ${props.top};
+      margin-top: ${props.top}px;
     `}
   ${props =>
     props.bottom &&
     css`
-      margin-top: ${props.bottom};
+      margin-top: ${props.bottom}px;
     `}
 `;
 export const Col = styled.div`
@@ -26,11 +26,15 @@ export const Col = styled.div`
   ${props =>
     props.top &&
     css`
-      margin-top: ${props.top};
+      margin-top: ${props.top}px;
     `}
   ${props =>
     props.bottom &&
     css`
-      margin-top: ${props.bottom};
+      margin-top: ${props.bottom}px;
     `}
+		input {
+    padding: 10px;
+    font-size: 16px;
+  }
 `;
